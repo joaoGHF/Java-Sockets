@@ -22,7 +22,7 @@ public class FineServer extends Thread {
                 System.out.println("Conectado com " + server.getRemoteSocketAddress());
 
                 DataInputStream in = new DataInputStream(server.getInputStream());
-                System.out.println("Mensagem do cliente: " + in.readUTF());
+                System.out.println("cliente -> : " + in.readUTF());
 
                 DataOutputStream out = new DataOutputStream(server.getOutputStream());
                 out.writeUTF("Server -> Obrigado por conectar-se com " + server.getLocalSocketAddress());
