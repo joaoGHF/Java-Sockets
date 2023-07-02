@@ -28,9 +28,13 @@ public class Client {
                 System.out.println("Mensagem cliente:");
                 userInput = stdIn.readLine();
 
+                String sha256Hash = Encryption.encrypt_SHA_256(userInput);
+                String verif = new String("HASH SHA256 Mensagem: " + sha256Hash + ";");
+                System.out.println(verif);
+
                 out.println(userInput);
 
-                System.out.println("Servidor  -> " + in.readLine());
+                System.out.println("Servidor -> " + in.readLine() + "\n");
             }
 
             in.close();

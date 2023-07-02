@@ -22,9 +22,14 @@ public class ClientHandler implements Runnable {
             String inputLine = "";
             while (!inputLine.equalsIgnoreCase("{@break}")) {
                 inputLine = in.readLine();
+
                 System.out.println("Cliente " + this.id + " -> " + inputLine);
-                System.out.println("Servidor  -> " + "OK");
-                out.println("OK");
+                String sha256Hash = Encryption.encrypt_SHA_256(inputLine);
+
+                String response = new String(inputLine +";HASH SHA256: " + sha256Hash + ";");
+
+                System.out.println("Servidor  -> " + response + "\n");
+                out.println(response);
             }
 
             in.close();
