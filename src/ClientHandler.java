@@ -4,15 +4,31 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/** A classe {@code ClientHandler} é responsável pelo atendimento e cada cliente, recebendo, enviando e cifrando mensagens.
+ * @implements Runnable
+ * @see Client
+ * @see Encryption
+ * @see Server
+ */
 public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private Long id;
 
-    public ClientHandler(Socket clientSocket, Long id) {
+    /** Constructor da classe {@code ClientHandler}.
+     * @param clientSocket do tipo {@code Socket} e que representa o cliente a ser atendido.
+     * @param id do tipo {@code long} e que representa o {@code ID} do cliente.
+     */
+    public ClientHandler(Socket clientSocket, long id) {
         this.clientSocket = clientSocket;
         this.id = id;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p> O método {@code run} foi sobrescrito para o tratamento de cada {@link Client} obtido no servidor {@link Server} e também o ciframento com uso da classe {@link Encryption}. </p>
+     * @return void
+     * @see Encryption
+     */
     @Override
     public void run() {
         try {
@@ -40,5 +56,4 @@ public class ClientHandler implements Runnable {
             e.printStackTrace();
         }
     }
-
 }

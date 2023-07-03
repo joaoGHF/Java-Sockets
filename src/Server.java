@@ -4,12 +4,20 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/** A classe {@code Server} tem como objetivo iniciar o servidor e tratar a criação de um {@code ClientHandler} para cada {@code Client}
+ * @see Client
+ * @see ClientHandler
+ */
 public class Server {
     private static Long clientId = 0L;
     private ServerSocket serverSocket;
     private ExecutorService executor;
 
-    public Server(int port, int nThreads) throws IOException {
+    /** Constructor da classe {@code Server}.
+     * @param port do tipo {@code int} que representa a porta do servidor que cada {@code Client} deve conectar-se
+     * @param nThreads do tipo {@code int} que representa o número máximo de threads que podem ser geradas.
+     */
+    public Server(int port, int nThreads) {
         try {
             serverSocket = new ServerSocket(port);
             executor = Executors.newFixedThreadPool(nThreads);
@@ -18,6 +26,8 @@ public class Server {
         }
     }
 
+    /** O método {@code start()} é responsável por sempre esperar a conexão de um {@code Client} para atribuí-lo um {@code ClientHandler} e um {@code clientId}.
+     */
     public void start() {
         System.out.println("Servidor iniciado, aguardando conexões");
 
@@ -37,23 +47,18 @@ public class Server {
         }
     }
 
-    public void stop() {
-        executor.shutdown();
-
-        try {
-            serverSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    /** o método {@code main} atribuí um novo objeto {@code Server} para a variável {@code server} usando os atributos {@code int port} para o número da porta que o servidor deve abrir e {@code int nThreads} para o número de {@code Threads} permitido. Depois é utilizado o método {@link Server#start()} para continuidade da execução do servidor.
+     * @param args - sem uso de argumentos da linha de comando.
+     * @implSpecAlterar os valores de {@code int port} e {@code int nThreads} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Client}.
+     */
     public static void main(String[] args) {
         try {
             int port = 5555;
+            int nThreads = 10;
             Server server;
-            server = new Server(port, 10);
+            server = new Server(port, nThreads);
             server.start();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

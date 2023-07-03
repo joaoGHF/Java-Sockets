@@ -4,16 +4,28 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/** A classe {@code Client} é usada como socket para conectar-se ao {@link Server} e executar comunicações com {@link ClientHandler}, usando a cifra {@code SHA-256} disponível em {@link Encryption}.
+ * Usando como valores padrão para o {@code serverAddress} e {@code serverPort}, respctivamente {@code "127.0.0.1"} e {@code 5555}.
+ * @see Encryption
+ * @see Server
+ * @see ClientHandler
+ */
 public class Client {
 
     String serverAddress;
     int serverPort;
 
+    /** Constructor que recebe os parâmetros {@code serverAddress} e {@code serverPort}.
+     * @param serverAddress - {@code String} para o endereço do servidor
+     * @param serverPort - {@code int} para a porta do servidor
+     */
     public Client(String serverAddress, int serverPort) {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
     }
 
+    /** Método {@code start} executa toda a conexão e comunicação com o {@code ServerSocket}. Usa fluxos de entrada e saída para receber {@code inputs} do usuário pelo terminal através do {@code BufferedReader stdIn} e do servidor pelo {@code BufferedReader in} e, envia mensagens para o servidor com o {@code PrintWriter out}.
+     */
     public void start() {
         try {
             Socket socket = new Socket(this.serverAddress, this.serverPort);
@@ -46,7 +58,12 @@ public class Client {
         }
     }
 
+    /** Método main que cria um objeto do tipo {@code Client} chamado {@code client} com os parâmetros {@code String serverAddress} e {@code int serverPort}. Para então executar o método {@code start()} de {@code client}.
+     * @param args - sem uso de argumentos da linha de comando.
+     * @implSpecAlterar os valores de {@code String serverAddress} e {@code int serverPort} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Server}.
+     */
     public static void main(String[] args) {
+
         String serverAddress = "127.0.0.1";
         int serverPort = 5555;
 
