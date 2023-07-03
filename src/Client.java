@@ -60,7 +60,7 @@ public class Client {
 
     /** <p>Método main que cria um objeto do tipo {@code Client} chamado {@code client} com os parâmetros {@code String serverAddress} e {@code int serverPort}. Para então executar o método {@code start()} de {@code client}.</p>
      * @param args - sem uso de argumentos da linha de comando.
-     * <p>@implNote Alterar os valores de {@code String serverAddress} e {@code int serverPort} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Server}.</p>
+     * <p>@implNote Os valores de {@code String serverAddress} e {@code int serverPort} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Server}.</p>
      */
     public static void main(String[] args) {
 

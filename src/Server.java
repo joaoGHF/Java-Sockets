@@ -49,7 +49,7 @@ public class Server {
 
     /** <p>O metodo {@code main} atribuí um novo objeto {@code Server} para a variável {@code server} usando os atributos {@code int port} para o número da porta que o servidor deve abrir e {@code int nThreads} para o número de {@code Threads} permitido. Depois e utilizado o metodo {@link Server#start()} para continuidade da execução do servidor.</p>
      * @param args - sem uso de argumentos da linha de comando.
-     * <p>@implNote Alterar os valores de {@code int port} e {@code int nThreads} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Client}.</p>
+     * <p>@implNote Os valores de {@code int port} e {@code int nThreads} podem ser alterados de acordo com suas necessidades. E em caso de alteração da porta do servidor, deve-se conferir uma alteração para a porta do servidor em {@link Client}.</p>
      */
     public static void main(String[] args) {
         try {
